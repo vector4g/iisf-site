@@ -18,7 +18,7 @@ type Post = {
   categories?: Category[];
 };
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 async function getPosts(): Promise<Post[]> {
   const data = await sanityClient.fetch(allPostsQuery);

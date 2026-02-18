@@ -21,7 +21,7 @@ interface Post {
   categories?: Category[];
 }
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 async function getPost(slug: string): Promise<Post | null> {
   const data = await sanityClient.fetch(singlePostQuery, { slug });

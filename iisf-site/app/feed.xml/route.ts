@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { sanityClient } from "@/lib/sanity";
 import { allPostsQuery } from "@/lib/queries";
 
-export const dynamic = 'force-static';
+export const dynamic = 'force-dynamic';
 
 export async function GET() {
   const posts: any[] = await sanityClient.fetch(allPostsQuery);
