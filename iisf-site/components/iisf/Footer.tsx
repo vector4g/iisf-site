@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
@@ -64,9 +65,13 @@ export default function Footer() {
               aria-label="Vector for Good"
               className="text-slate-500 hover:text-cyan-400 transition-colors"
             >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 2L2 19h20L12 2zm0 4l7 11H5l7-11z" />
-              </svg>
+              <Image
+                src="/vector-logo.png"
+                alt="Vector for Good"
+                width={16}
+                height={16}
+                className="w-4 h-4 opacity-50 hover:opacity-100 transition-opacity"
+              />
             </a>
           </div>
         </div>
