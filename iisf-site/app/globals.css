@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@layer utilities {
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 1s ease-out forwards;
+  }
+
+  .animate-fadeIn-delay-100 {
+    animation: fadeIn 1s ease-out 0.1s forwards;
+  }
+
+  .animate-fadeIn-delay-200 {
+    animation: fadeIn 1s ease-out 0.2s forwards;
+  }
+
+  .animate-fadeIn-delay-300 {
+    animation: fadeIn 1s ease-out 0.3s forwards;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 0.1s;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 0.3s;
+  }
+}
