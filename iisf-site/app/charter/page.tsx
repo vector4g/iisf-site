@@ -13,6 +13,22 @@ export const metadata: Metadata = {
     url: "https://intersectionalsafety.org/charter",
   },
   alternates: { canonical: "https://intersectionalsafety.org/charter" },
+  // Google Scholar citation meta tags
+  other: {
+    "citation_title": "Charter of Fundamental Intersectional Safety Rights",
+    "citation_author": "International Intersectional Safety Foundation",
+    "citation_publication_date": "2024",
+    "citation_journal_title": "IISF Research Publications",
+    "citation_publisher": "International Intersectional Safety Foundation",
+    "citation_public_url": "https://intersectionalsafety.org/charter",
+    "citation_language": "en",
+    "dc.title": "Charter of Fundamental Intersectional Safety Rights",
+    "dc.creator": "International Intersectional Safety Foundation",
+    "dc.type": "text",
+    "dc.format": "text/html",
+    "dc.language": "en",
+    "dc.rights": "All rights reserved",
+  },
 };
 
 export default function CharterPage() {

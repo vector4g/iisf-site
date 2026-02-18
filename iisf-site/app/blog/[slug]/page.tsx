@@ -64,6 +64,10 @@ export async function generateMetadata({
     post.excerpt ?? "Research from the International Intersectional Safety Foundation.";
   const url = `https://intersectionalsafety.org/blog/${slug}`;
 
+  const pubDate = post.publishedAt
+    ? new Date(post.publishedAt).toISOString().split("T")[0]
+    : undefined;
+
   return {
     title,
     description,
@@ -77,6 +81,21 @@ export async function generateMetadata({
     },
     twitter: { card: "summary_large_image", title, description },
     alternates: { canonical: url },
+    // Google Scholar citation meta tags
+    other: {
+      "citation_title": title,
+      "citation_author": "International Intersectional Safety Foundation",
+      ...(pubDate ? { "citation_publication_date": pubDate } : {}),
+      "citation_journal_title": "Intersectional Safety Journal",
+      "citation_publisher": "International Intersectional Safety Foundation",
+      "citation_public_url": url,
+      "citation_language": "en",
+      "dc.title": title,
+      "dc.creator": "International Intersectional Safety Foundation",
+      "dc.type": "text",
+      "dc.format": "text/html",
+      "dc.language": "en",
+    },
   };
 }
 
