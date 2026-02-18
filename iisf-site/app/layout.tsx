@@ -49,6 +49,13 @@ export const metadata: Metadata = {
   creator: SITE_NAME,
   publisher: SITE_NAME,
 
+  icons: {
+    icon: [
+      { url: "/iisf-logo.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [{ url: "/iisf-logo.png" }],
+  },
+
   formatDetection: { telephone: false },
 
   openGraph: {
