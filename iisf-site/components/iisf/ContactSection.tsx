@@ -50,7 +50,73 @@ export default function ContactSection() {
           onSubmit={onSubmit}
           className="mt-6 grid gap-4 md:grid-cols-2 opacity-0 animate-fadeIn"
         >
-          {/* ...inputs unchanged... */}
+          <div>
+            <label htmlFor="name" className="block text-xs text-slate-400 mb-1">
+              Name *
+            </label>
+            <input
+              id="name"
+              type="text"
+              required
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
+              className="w-full rounded border border-slate-700 bg-slate-900/50 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:border-slate-500 focus:outline-none"
+              placeholder="Your name"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="organization" className="block text-xs text-slate-400 mb-1">
+              Organization
+            </label>
+            <input
+              id="organization"
+              type="text"
+              value={form.organization}
+              onChange={(e) => setForm({ ...form, organization: e.target.value })}
+              className="w-full rounded border border-slate-700 bg-slate-900/50 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:border-slate-500 focus:outline-none"
+              placeholder="Optional"
+            />
+          </div>
+
+          <div className="md:col-span-2">
+            <label htmlFor="subject" className="block text-xs text-slate-400 mb-1">
+              Subject *
+            </label>
+            <input
+              id="subject"
+              type="text"
+              required
+              value={form.subject}
+              onChange={(e) => setForm({ ...form, subject: e.target.value })}
+              className="w-full rounded border border-slate-700 bg-slate-900/50 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:border-slate-500 focus:outline-none"
+              placeholder="What's this about?"
+            />
+          </div>
+
+          <div className="md:col-span-2">
+            <label htmlFor="message" className="block text-xs text-slate-400 mb-1">
+              Message *
+            </label>
+            <textarea
+              id="message"
+              required
+              rows={5}
+              value={form.message}
+              onChange={(e) => setForm({ ...form, message: e.target.value })}
+              className="w-full rounded border border-slate-700 bg-slate-900/50 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:border-slate-500 focus:outline-none"
+              placeholder="Your message to the Foundation..."
+            />
+          </div>
+
+          <div className="md:col-span-2">
+            <button
+              type="submit"
+              className="rounded bg-slate-100 px-5 py-2 text-sm font-medium text-[#05060a] hover:bg-slate-200"
+            >
+              Send Message
+            </button>
+          </div>
         </form>
 
         {error && (
