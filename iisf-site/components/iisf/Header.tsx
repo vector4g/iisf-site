@@ -26,21 +26,21 @@ export default function Header() {
         </Link>
 
         <nav className="flex items-center gap-5 text-xs text-slate-300">
-          <a href="#grants" className="hover:text-slate-50">
+          <Link href="/#grants" className="hover:text-slate-50">
             Fellowships
-          </a>
+          </Link>
           <Link href="/charter" className="hover:text-slate-50">
             Charter
           </Link>
           <Link href="/governance" className="hover:text-slate-50">
             Governance
           </Link>
-          <a href="#contact" className="hover:text-slate-50">
+          <Link href="/#contact" className="hover:text-slate-50">
             Contact
-          </a>
-          <a href="/blog" className="hover:text-slate-50">
+          </Link>
+          <Link href="/blog" className="hover:text-slate-50">
             Blog
-          </a>
+          </Link>
           <Link
             href="/legal"
             className="hidden text-slate-400 hover:text-slate-200 sm:inline"

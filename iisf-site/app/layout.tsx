@@ -108,8 +108,9 @@ const organizationJsonLd = {
   description: DEFAULT_DESCRIPTION,
   foundingDate: "2024",
   sameAs: [
-    "https://www.linkedin.com/company/iisf",
+    "https://www.linkedin.com/company/intersectional-safety-foundation",
     "https://github.com/Vector4g",
+    "https://vectorforgood.com",
   ],
   contactPoint: {
     "@type": "ContactPoint",
