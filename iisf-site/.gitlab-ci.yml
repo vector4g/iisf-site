@@ -3,13 +3,12 @@ image: node:20
 pages:
   stage: deploy
   script:
-    - cd iisf-site
     - npm install
     - npm run build
     - rm -rf public
     - mv out public
   artifacts:
     paths:
-      - iisf-site/public
+      - public
   only:
     - main
