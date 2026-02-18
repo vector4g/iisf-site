@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import Header from "@/components/iisf/Header";
 import Footer from "@/components/iisf/Footer";
+
+export const metadata: Metadata = {
+  title: "Legal",
+  description: "Privacy policy, terms of service, and imprint for the International Intersectional Safety Foundation.",
+  robots: { index: false, follow: true },
+  alternates: { canonical: "https://intersectionalsafety.org/legal" },
+};
 
 export default function LegalIndexPage() {
   return (

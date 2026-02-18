@@ -1,8 +1,22 @@
+import type { Metadata } from "next";
 import Header from "@/components/iisf/Header";
 import Footer from "@/components/iisf/Footer";
 import Link from "next/link";
 import { sanityClient } from "@/lib/sanity";
 import { allPostsQuery } from "@/lib/queries";
+
+export const metadata: Metadata = {
+  title: "Journal & Research Notes",
+  description:
+    "Essays from IISF and Vector for Good on intersectional safety, sensory science, autonomous logistics, and algorithmic governance.",
+  openGraph: {
+    title: "Intersectional Safety Journal",
+    description:
+      "Research notes on sensory safety, kinetic equity, and algorithmic accountability.",
+    url: "https://intersectionalsafety.org/blog",
+  },
+  alternates: { canonical: "https://intersectionalsafety.org/blog" },
+};
 
 type Category = {
   _id: string;

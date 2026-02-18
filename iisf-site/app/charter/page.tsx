@@ -1,5 +1,19 @@
+import type { Metadata } from "next";
 import Header from "@/components/iisf/Header";
 import Footer from "@/components/iisf/Footer";
+
+export const metadata: Metadata = {
+  title: "Charter of Fundamental Intersectional Safety Rights",
+  description:
+    "The full Charter codifying the Grandin, Heumann, and Crenshaw Standards — sensory safety biotelemetry, kinetic equity gait analysis, and algorithmic intersectional error-rate parity.",
+  openGraph: {
+    title: "Charter of Fundamental Intersectional Safety Rights",
+    description:
+      "Translating human rights into auditable, telematic science — the Grandin, Heumann, and Crenshaw Standards.",
+    url: "https://intersectionalsafety.org/charter",
+  },
+  alternates: { canonical: "https://intersectionalsafety.org/charter" },
+};
 
 export default function CharterPage() {
   return (

@@ -1,5 +1,7 @@
+import type { Metadata } from "next";
 import Header from "@/components/iisf/Header";
 import Footer from "@/components/iisf/Footer";
+import JsonLd from "@/components/JsonLd";
 import { sanityClient } from "@/lib/sanity";
 import { allPostsQuery, singlePostQuery } from "@/lib/queries";
 import { notFound } from "next/navigation";
@@ -48,6 +50,36 @@ export async function generateStaticParams(): Promise<PostSlug[]> {
   return posts.map((p) => ({ slug: p.slug }));
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPost(slug);
+  if (!post) return {};
+
+  const title = post.title;
+  const description =
+    post.excerpt ?? "Research from the International Intersectional Safety Foundation.";
+  const url = `https://intersectionalsafety.org/blog/${slug}`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "article",
+      publishedTime: post.publishedAt,
+      authors: ["International Intersectional Safety Foundation"],
+    },
+    twitter: { card: "summary_large_image", title, description },
+    alternates: { canonical: url },
+  };
+}
+
 const portableComponents: PortableTextComponents = {
   block: {
     h1: ({ children }) => (
@@ -84,8 +116,30 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
     notFound();
   }
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt ?? "",
+    datePublished: post.publishedAt,
+    url: `https://intersectionalsafety.org/blog/${slug}`,
+    author: {
+      "@type": "Organization",
+      name: "International Intersectional Safety Foundation",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "International Intersectional Safety Foundation",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://intersectionalsafety.org/iisf-logo.png",
+      },
+    },
+  };
+
   return (
     <main className="min-h-screen bg-[#05060a] text-slate-100">
+      <JsonLd data={articleJsonLd} />
       <Header />
       <article className="mx-auto max-w-3xl px-4 py-16">
         <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
