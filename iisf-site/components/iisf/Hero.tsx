@@ -41,7 +41,7 @@ export default function Hero() {
 
           <div className="flex flex-col gap-3 pt-2 text-sm md:flex-row md:items-center">
             <Link
-              href="/iisf#charter"
+              href="/charter"
               className="inline-flex items-center justify-center rounded-md bg-slate-100 px-5 py-2 text-sm font-medium text-[#05060a] hover:bg-slate-200"
             >
               Read the Charter

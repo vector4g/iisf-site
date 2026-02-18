@@ -53,12 +53,12 @@ export default function CharterModal({
                       <li>2. Identity Sovereignty.</li>
                       <li>3. Algorithmic Accountability.</li>
                     </ul>
-                    <button
-                      disabled
-                      className="mt-6 inline-flex cursor-not-allowed items-center rounded-md border border-slate-700 bg-slate-900 px-3 py-1.5 text-xs text-slate-500"
+                    <a
+                      href="/charter"
+                      className="mt-6 inline-flex items-center rounded-md border border-slate-700 bg-slate-900 px-3 py-1.5 text-xs text-slate-200 hover:bg-slate-800"
                     >
-                      View Full Charter (Coming Soon)
-                    </button>
+                      View Full Charter →
+                    </a>
                   </>
                 )}
 

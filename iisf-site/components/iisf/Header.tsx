@@ -29,9 +29,12 @@ export default function Header() {
           <a href="#grants" className="hover:text-slate-50">
             Fellowships
           </a>
-          <a href="#ethics" className="hover:text-slate-50">
+          <Link href="/charter" className="hover:text-slate-50">
+            Charter
+          </Link>
+          <Link href="/governance" className="hover:text-slate-50">
             Governance
-          </a>
+          </Link>
           <a href="#contact" className="hover:text-slate-50">
             Contact
           </a>
