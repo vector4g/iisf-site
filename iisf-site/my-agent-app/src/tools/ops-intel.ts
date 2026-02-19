@@ -146,6 +146,99 @@ FUNDING PRIORITY MATRIX:
   Needs academic partner: NSF (#4), NIH (#13), William T. Grant (#9)
   Needs EU partner: Horizon Europe (#6), European Disability Forum (#16)`,
 
+  // ── ENTERPRISE COMPLIANCE & REGULATORY LANDSCAPE ────────────────────────
+
+  enterprise_compliance: `THE COMPLIANCE BRIDGE — Regulatory Integration for Vector for Good (Feb 2026)
+
+REGULATORY PERFECT STORM: ISO 31030, GDPR, AND THE CSRD PARADOX
+  The primary challenge facing CROs and ESG directors in 2026 is the "Universal Traveler" failure.
+  Traditional risk systems (Everbridge, International SOS) rely on generalized threat models assuming homogeneous traveler profiles.
+  ISO 31030 explicitly demands organizations identify and mitigate threats tailored to specific employee profiles.
+  This requirement directly clashes with GDPR and the EU AI Act, which restrict collection of sensitive identity data
+  (sexual orientation, religious affiliation, neurodivergent status).
+
+VECTOR FOR GOOD'S UNIFIED COMPLIANCE LAYER:
+  • Provides hyper-local, privacy-preserving safety scores without employers possessing sensitive PII
+  • Multi-agent AI architecture creates a "zero-knowledge" safety assessment loop
+  • Cuts compliance costs by an estimated 60-70%
+  • Enables automated generation of ESG narratives required for ESRS under the CSRD
+  • NVIDIA Inception-powered on-edge architecture for air-gapped/low-connectivity environments
+
+EU AI ACT — HIGH-RISK DESIGNATION:
+  Systems impacting fundamental rights (security, workplace safety) are "high-risk" under the Act.
+  • Fundamental Rights Impact Assessment (FRIA): Required for Crenshaw and Grandin modules
+  • Human Oversight: Mandate for technical + organizational measures; multi-agent architecture must include "human-in-the-loop" verification
+  • Vector's 501(c)(3) ownership = unique trust advantage ("CERN for AI Safety")
+
+CSRD DEADLINES — FEB 2026 SCOPE:
+  First wave of CSRD reporting for large public-interest entities due early 2026.
+  Critical Gap: Most enterprises have no formal way to collect "S" (Social) metrics for intersectional workforce.
+  Opportunity: Vector's "Shared Assessment Logs" and "Automated ESG Narratives" fill this gap with auditable evidence.
+
+COMPETITIVE LANDSCAPE:
+  • Avantos: $25M Series A — Compliance AI Agents
+  • Ritivel: YC W2026 — Compliance automation
+  • Market: Seed-stage valuations down 20-30% from 2023 peaks; VCs prioritize revenue metrics and unit economics
+  • IISF 501(c)(3) structure attracts talent and grants that for-profit competitors cannot access
+
+POSITIONING: "The Compliance Bridge" — the only tool delivering ESRS S1-S4 social disclosures
+without triggering data privacy violations. Frame as essential risk mitigation, not optional social initiative.`,
+
+  // ── VECTOR FOR GOOD — FEDERAL & INTERNATIONAL GRANTS (Category 1) ──────
+
+  funding_grants_federal: `CATEGORY 1: NON-DILUTIVE FUNDING & FEDERAL GRANTS — $2.5M Seed Target (80% Non-Dilutive)
+
+1. National Science Foundation (NSF) — SBIR/STTR Phase I (FY26)
+   Target Module: Grandin / Heumann
+   Award: $275,000 - $300,000 | Deadline: Rolling / Q2 2026
+   Sub-topics: AI7 (Trustworthy AI) + MO7 (Accessibility) — strongest fit
+   Emphasize: Heumann module navigation + NVIDIA-powered privacy architecture
+   Entity: Delaware PBC
+   ★ HIGHEST PRIORITY — translating multi-agent systems research into scalable products for public good
+
+2. European Innovation Council (EIC) — EIC Accelerator (Open/Challenge)
+   Target: Unified Compliance Layer
+   Award: €2.5M (Grant) + €10M (Equity) | Deadline: Every 2 months
+   Strategy: Use Estonia OÜ entity; seek "STEP Seal" for complementary EU funding access
+   ★ Blended finance — largest single potential award
+
+3. Enterprise Estonia (EIS) — Programme for Applied Research (RUP)
+   Target: Multi-Agent AI Architecture
+   Award: €250,000 - €2M | Deadline: Sept 28, 2026
+   Focus: TRL 6-7 experimental development; AI/ML for mobility
+   Entity: Estonia OÜ
+   ⚠ Mandatory pre-consultation by Feb 25, 2026 → March 23 submission deadline
+
+4. Humanity AI Coalition — Pooled Foundation Fund
+   Target: Crenshaw Module (Security + Democracy)
+   Award: $500,000 - $1.5M | Deadline: Rolling 2026
+   Manager: Rockefeller Philanthropy Advisors
+   Frame as: "Security" and "Democracy" tool for intersectional rights
+
+5. HHS / NIDILRR — ERC on AI-Driven Assistive Tech
+   Target: Heumann / Grandin modules
+   Award: $975,000 (Annual) | Deadline: Q2 2026
+
+6. NEEF / Toyota — Driving Mobility Grant
+   Target: Heumann (Smart Cities)
+   Award: $20,000 | Deadline: Feb 18, 2026
+   ⚠ Deadline imminent
+
+7. CTA Foundation — Eureka Park Accessibility Contest
+   Target: All Modules (CES 2026)
+   Award: $20,000 | Deadline: Jan 2026
+
+8. Horizon Europe — Cluster 3: Civil Security
+   Target: Safety for Intersectional Groups
+   Award: €2M - €5M | Deadline: May 2026
+
+SEARCH QUERIES FOR CATEGORY 1:
+  "NSF SBIR 2026 Phase I AI7 MO7 intersectional travel safety"
+  "EIC Accelerator 2026 STEP Seal project list AI safety"
+  "Enterprise Estonia RUP program 2026 TRL 3-5 AI safety"
+  "Humanity AI coalition $500M grant cycle 2026 priorities"
+  "Horizon Europe Cluster 3 2026 call inclusive society AI"`,
+
   // ── BOARD & ADVISOR PIPELINE ──────────────────────────────────────────────
 
   board_disability: `DISABILITY ADVOCACY SEAT — Candidate Longlist
@@ -397,6 +490,213 @@ SUCCESS METRICS (90-day):
   SEO: Top-3 ranking for "intersectional safety" and "sensory safety standards" (low competition)
   Partnerships: ≥1 formal partnership (Access Now or European Disability Forum)
   Infrastructure: EU Participant Portal + Google Scholar + ORCID registered`,
+
+  // ── VECTOR FOR GOOD — IMPACT INVESTORS (Category 2) ────────────────────
+
+  funding_impact_investors: `CATEGORY 2: IMPACT INVESTMENT FUNDS — Strategic Mission Alignment
+
+Impact funds moving beyond "green" investments into S (Social) and G (Governance) ESG pillars.
+Vector's 501(c)(3) ownership structure = significant advantage for long-term mission lock.
+
+1. Propel VC — Strengthening the social safety net via AI
+   Check Size: $1M - $3M | Focus: US (Global R&D) | Affinity: Social/Safety
+   Thesis: "All Americans deserve a consumer-grade experience from their government"
+   ★ AI Residency program — non-dilutive R&D + state/federal agency partnerships
+   Search: "Propel VC AI Residency program 2026 safety net R&D"
+
+2. Kapor Capital — Gap-closing tech in justice and health
+   Check Size: $500K - $2M | Focus: US | Affinity: DEI/Social Justice
+   Search: "Kapor Capital 2026 seed deals social justice AI"
+
+3. Obvious Ventures — "World Positive" Planetary/Human/Economic health
+   Check Size: $1M - $5M | Focus: US/Global | Affinity: ESG/Human Health
+   Demands: Traceability and ethical design; ESG integrated into DNA from early stages
+   Vector fit: Shared assessment logs + automated ESRS social disclosures
+   Search: "Obvious Ventures Fund V planetary human economic health 2026"
+
+4. ImpactAssets 50 — Emerging impact managers in tech/mobile
+   Check Size: Varies | Focus: Global | Affinity: Diversified Impact
+   Search: "ImpactAssets 50 2026 list active impact VC managers"
+
+5. Omidyar Network — Intersection of technology and society
+   Check Size: $500K - $1.5M | Focus: Global | Affinity: Democracy/Security
+   Search: "Omidyar Network 2026 technology and society fund"
+
+6. MacArthur Foundation — People-centered future for AI
+   Check Size: $1M+ | Focus: US/Global | Affinity: Equity/Security
+
+KEY INSIGHT: Impact investors want startups that can quantify social impact through auditable metrics.
+Vector's shared assessment logs and automated ESRS social disclosures provide exactly this.`,
+
+  // ── VECTOR FOR GOOD — AI/ESG/COMPLIANCE VCs (Category 3) ───────────────
+
+  funding_vc_ai_esg: `CATEGORY 3: AI, ESG & COMPLIANCE-TECH VCs — Vertical AI and Global Resilience
+
+Firms specializing in "Vertical AI" and "Global Resilience" thesis.
+Market shift: Moving from "move fast and break things" → "responsible innovation" frameworks.
+
+1. Bessemer Venture Partners
+   Lead: Maha Malik (Vertical AI)
+   Portfolio: Avantos (AI OS)
+   Focus: Application-layer AI, Defense Tech
+   2026: Defense Tech/State of AI roadmap; "Built-World AI" as core frontier
+   Vector fit: Multi-agent orchestration mirrors Bessemer's focus on uncrewed/agent systems
+   Search: "Bessemer Venture Partners 2026 Defense Tech Roadmap"
+
+2. General Catalyst
+   Lead: Paul Kwan (Managing Director)
+   Portfolio: Helsing (Defense AI)
+   Focus: Global Resilience
+   2026: GCI Washington Engagement; "Health Assurance" + proactive safety models
+   Vector fit: Shifting critical institutions toward proactive wellness and safety
+   Search: "General Catalyst Institute 2026 policy summit resilience"
+
+3. Delta-v Capital
+   Lead: Garrett Marsilio (Partner)
+   Portfolio: VerticalAI (Consultancy)
+   Focus: Data Science/Critical Infrastructure
+   2026: Proprietary sourcing pipeline
+   Search: "Delta-v Capital 2025-2026 data science team partner"
+
+4. Alg Wind Ventures
+   Lead: Bob Ma (Director)
+   Portfolio: Confidential Stealth AI
+   Focus: Critical Infrastructure, Industrial AI
+   Search: "Vertical AI application layer VC deals 2026"
+
+5. InsurTech Fund
+   Lead: Sokhiba Mukhitdinova
+   Portfolio: Quantee (AI Scoring)
+   Focus: Fintech/Climate/Safety, ESG Policy
+   Search: "InsurTech NY 2026 ESG policy diverse founders"
+
+KEY INSIGHT: NVIDIA Inception-powered architecture provides "technological sovereignty" and
+"trustworthy cognitive AI" these firms seek to strengthen national resilience.`,
+
+  // ── VECTOR FOR GOOD — DIVERSITY & AFFINITY VCs (Category 4) ─────────────
+
+  funding_vc_diversity: `CATEGORY 4: DIVERSITY, QUEER & AFFINITY-FOCUSED VCs
+
+1. Gaingels — LGBTQ+ Founders/Allies
+   Model: Syndicate (2,400+ companies, $900M+ deployed)
+   Portfolio: BoldHue (Beauty AI)
+   Focus: Diversity/Inclusive Teams; active in board/C-suite diversity pipeline
+   ★ Preeminent LGBTQ+ investor syndicate
+   Search: "Gaingels 2026 investment portfolio AI safety"
+
+2. Harlem Capital — Black/Latino Founders
+   Check Size: $750K - $1M (Seed) | Portfolio: Testparty (Accessibility)
+   Focus: Great founders in $1B+ markets; monthly revenue, unit economics, retention
+   Vector fit: Crenshaw module mitigates intersectional social/legal risks → justice and equity
+   Search: "Harlem Capital 2026 winter intern class portfolio"
+
+3. WITH Foundation — Intellectual/Developmental Disability
+   Model: Award-based | Portfolio: HapWare (Health Challenge)
+   Focus: Health Innovation Challenges
+   Search: "WITH Foundation 2026 Health Innovation Challenge winner"
+
+4. TransTech Social — Queer/Trans/Diverse Tech
+   Check Size: Varies | Focus: Economic empowerment for trans/diverse talent
+   Search: "LGBTQ+ startup investors 2026 top 50 list"
+
+5. Backstage Capital — Underrepresented Founders
+   Check Size: $50K - $1M | Portfolio: 100+ diverse startups
+   Focus: Inclusive ecosystem building
+   Search: "Diversity in VC 2026 Series A benchmarks"`,
+
+  // ── VECTOR FOR GOOD — ENTERPRISE SAFETY VCs (Category 5) ───────────────
+
+  funding_vc_enterprise_safety: `CATEGORY 5: ENTERPRISE SAFETY, TRAVEL & REGULATORY VCs
+
+Firms tied to corporate travel and duty-of-care infrastructure.
+Focus: "High Velocity Critical Event Management" (CEM), national public warning.
+Gap: 50% of customers lack formal management strategies; AI investment to close readiness gaps.
+
+1. Everbridge Ventures — Critical Event Management
+   Interest: AI-driven Risk Intelligence
+   Engage: Discover Resilience 2026 conference
+   Search: "Everbridge 2026 Global Risk Resilience Outlook"
+
+2. International SOS — Duty of Care Training
+   Interest: Travel Risk Standards
+   Engage: Rome Summit May 2026
+   Search: "International SOS Duty of Care Awards May 2026"
+
+3. ServiceNow — Critical Infrastructure
+   Interest: Emergency Event Management; Joint Solution Integration
+   Search: "ISO 31030 travel risk management tech providers 2026"
+
+4. Bessemer (Defense) — National Security/Robotics
+   Lead: David Cowan (Partner)
+   Interest: On-Edge Agentic AI
+   Search: "Executive protection study 2026 ASIS Everbridge"
+
+5. 50 Years — Deep Tech Addressing SDGs
+   Interest: Drug Discovery/AI Safety; Mission-Critical Scaling
+   Search: "Agentic AI for critical infrastructure security 2026"
+
+KEY INSIGHT: "Expanding Risk Zone" in 2026 — convergence of digital, physical, and human vulnerabilities.
+Vector provides "decision-ready risk intelligence" at the digital-physical intersection.`,
+
+  // ── NVIDIA INCEPTION & AGENTIC AI ADVANTAGE ─────────────────────────────
+
+  nvidia_inception: `NVIDIA INCEPTION PROGRAM — Agentic AI Advantage (2026)
+
+TECHNICAL RESOURCES:
+  • Access to 150+ NVIDIA SDKs and pre-trained models
+  • Iterate on large datasets; deploy models at the edge
+  • Critical for Heumann and Grandin modules in air-gapped/low-connectivity environments
+
+VC ALLIANCE:
+  • Direct introductions to global investors excited about accelerated computing for real-world impact
+  • Target: Request formal intros through Inception leadership to Bessemer + General Catalyst partners
+
+MARKET VISIBILITY:
+  • GTC Washington D.C. — present to government agencies and Fortune 500 partners
+  • Positioning: "Secure, AI-Enabled Models" that protect privacy and compliance
+  • Eureka Park / CES 2026 accessibility stage
+
+AGENTIC AI TREND (2026):
+  The market shift from chatbots → autonomous agents solving labor shortages in compliance auditing and regulatory writing.
+  Portfolio examples: Accrual (financial compliance), Ritivel (YC W2026, regulatory)
+  Vector fit: Multi-agent systems providing automated ESG narratives = high-impact alignment with this trend.`,
+
+  // ── SEED ROUND STRATEGY & EXECUTION ────────────────────────────────────
+
+  seed_round_strategy: `$2.5M SEED ROUND — Strategic Execution Plan
+
+1. GRANT HIT LIST (Q1-Q2 2026 PRIORITY):
+   a) NSF SBIR Phase I (Feb 2026 Window): Target MO7 (Accessibility) + AI7 (Trustworthy AI)
+      Emphasize Heumann module navigation + NVIDIA privacy architecture
+   b) EIC Accelerator: Use Estonia OÜ for blended finance; target STEP Seal
+   c) Humanity AI Coalition: Submit project proposal for Pooled Fund (Rockefeller Philanthropy Advisors)
+      Frame Crenshaw module as "Security" + "Democracy" tool
+   d) CTA Foundation Pitch Competition: Leverage CES 2026 Accessibility Stage
+      Secure awards + sponsorship from Verizon or Microsoft
+
+2. WARM INTRO & NETWORK STRATEGY:
+   a) NVIDIA VC Alliance: Request intros to Bessemer (Vertical AI) + General Catalyst (Global Resilience)
+   b) Propel AI Residency: Submit 2026 application for non-dilutive R&D + agency partnerships
+   c) Estonia Regional Development Center: Complete RUP pre-consultation by Feb 25, 2026 → March 23 deadline
+
+3. PITCH TWEAKS FOR $2.5M SEED ASK:
+   a) Reframe: NOT "travel safety for minorities" → "Solution to the ISO 31030/GDPR Compliance Paradox"
+      Position as essential risk mitigation tool, not optional social initiative
+   b) "Compliance Bridge" Narrative: Only tool delivering ESRS S1-S4 social disclosures
+      without triggering data privacy violations (Feb 2026 CSRD scope)
+   c) Founder Advantage: Levi Hankins — Navy vet + multi-agent AI expert
+      Builds credibility with Defense/Security VCs (Bessemer, General Catalyst)
+
+RISKS & GAPS:
+  • EU AI Act high-risk designation → Conduct FRIAs for Crenshaw/Grandin modules
+  • Human oversight mandate → Multi-agent architecture needs human-in-the-loop verification
+  • CSRD gap → Most enterprises have no "S" metrics for intersectional workforce (opportunity)
+  • Competitive pressure → Avantos ($25M Series A), Ritivel (YC W2026) accelerating "Compliance AI Agents"
+  • Seed valuations down 20-30% from 2023 → VCs prioritize revenue + unit economics over growth
+
+THE 501(c)(3) ADVANTAGE:
+  Vector's IISF ownership = unique trust in an era where "Trustworthy AI" is weaponized by big tech.
+  Operates as a "CERN for AI Safety" — attracts talent and grants for-profit competitors cannot access.`,
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -406,7 +706,7 @@ SUCCESS METRICS (90-day):
 export const opsIntelTool = createTool({
   name: "ops_intel",
   description:
-    "Query IISF operational intelligence: funding pipeline, board/advisor candidates, domain ownership map, content/SEO strategy, and sprint roadmap. Use section names like 'funding_tier1', 'funding_tier2', 'funding_tier3', 'board_disability', 'board_data_ethics', 'board_lgbtq', 'domain_map_core', 'content_strategy', 'roadmap'. Use 'all_sections' to list available sections.",
+    "Query IISF operational intelligence. Sections: 'funding_tier1/2/3' (nonprofit grants), 'funding_grants_federal' (NSF/EIC/Estonia/HHS federal grants), 'funding_impact_investors' (Propel/Kapor/Obvious/Omidyar), 'funding_vc_ai_esg' (Bessemer/GC/Delta-v), 'funding_vc_diversity' (Gaingels/Harlem/TransTech), 'funding_vc_enterprise_safety' (Everbridge/IntlSOS/ServiceNow), 'enterprise_compliance' (ISO 31030/GDPR/CSRD regulatory landscape), 'nvidia_inception' (NVIDIA resources & VC Alliance), 'seed_round_strategy' ($2.5M seed execution plan), 'board_disability/data_ethics/lgbtq', 'domain_map_core', 'content_strategy', 'roadmap'. Use 'all_sections' to list all keys.",
   parameters: z.object({
     section: z
       .string()
