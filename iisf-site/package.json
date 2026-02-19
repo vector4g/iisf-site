@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:agent": "cd my-agent-app && npm run dev",
+    "dev:all": "concurrently -n site,agent -c cyan,magenta \"npm run dev\" \"npm run dev:agent\"",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

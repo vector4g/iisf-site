@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import JsonLd from "@/components/JsonLd";
+import ChatWidget from "@/components/iisf/ChatWidget";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -150,6 +151,7 @@ export default function RootLayout({
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={websiteJsonLd} />
         {children}
+        <ChatWidget />
       </body>
     </html>
   );
