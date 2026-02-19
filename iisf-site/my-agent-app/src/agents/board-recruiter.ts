@@ -1,5 +1,5 @@
 import { Agent } from "@voltagent/core";
-import { webSearchTool, emailDraftTool, governanceInfoTool, opsIntelTool } from "../tools";
+import { webSearchTool, emailDraftTool, governanceInfoTool, opsIntelTool, crmAddContactTool, crmUpdateStatusTool, crmAddNoteTool, crmQueryTool } from "../tools";
 
 /**
  * Board Recruiter — GPT-4o (OpenAI)
@@ -40,7 +40,7 @@ Rules:
 - Outreach tone: respectful, concise, mission-driven — not corporate or salesy.
 - All outreach emails CC board@intersectionalsafety.org.`,
   model: "openai/gpt-4o",
-  tools: [webSearchTool, emailDraftTool, governanceInfoTool, opsIntelTool],
+  tools: [webSearchTool, emailDraftTool, governanceInfoTool, opsIntelTool, crmAddContactTool, crmUpdateStatusTool, crmAddNoteTool, crmQueryTool],
   memory: false,
 });
 

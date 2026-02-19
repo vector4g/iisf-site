@@ -10,3 +10,4 @@ export { emailDraftTool } from "./email-draft";
 export { seoAnalyzerTool } from "./seo-analyzer";
 export { opsIntelTool } from "./ops-intel";
 export { indexNowSubmitTool } from "./indexnow";
+export { crmAddContactTool, crmUpdateStatusTool, crmAddNoteTool, crmQueryTool } from "./crm";

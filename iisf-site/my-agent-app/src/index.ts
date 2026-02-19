@@ -11,7 +11,7 @@ import { LibSQLMemoryAdapter, LibSQLObservabilityAdapter } from "@voltagent/libs
 import { createPinoLogger } from "@voltagent/logger";
 import { honoServer, jwtAuth } from "@voltagent/server-hono";
 import { researchInquiryWorkflow } from "./workflows";
-import { charterLookupTool, governanceInfoTool, fellowshipInfoTool, opsIntelTool } from "./tools";
+import { charterLookupTool, governanceInfoTool, fellowshipInfoTool, opsIntelTool, crmQueryTool } from "./tools";
 import {
   contentManager,
   fundingScout,
@@ -211,7 +211,7 @@ Guidelines:
 - Flag when something needs human decision-making (e.g., "should we apply for this grant?").
 - Never send emails without clearly stating you're about to do so — give the team a chance to review.`,
   model: "anthropic/claude-3-5-sonnet",
-  tools: [opsIntelTool],
+  tools: [opsIntelTool, crmQueryTool],
   subAgents: [contentManager, fundingScout, boardRecruiter, seoStrategist, researchDirector],
   memory,
   supervisorConfig: {
