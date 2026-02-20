@@ -264,6 +264,7 @@ new VoltAgent({
         "http://localhost:3141",
         "https://intersectionalsafety.org",
         "https://www.intersectionalsafety.org",
+        "https://ops.intersectionalsafety.org",
       ],
       allowHeaders: ["Content-Type", "Authorization"],
       allowMethods: ["POST", "GET", "OPTIONS"],
