@@ -1,11 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
+import { resolveAgentServerConfig } from "@/lib/agent-server";
 
 /**
  * Streaming proxy to VoltAgent — forwards SSE from the agent server
  * so the chat widget can render tokens in real time.
  */
-const AGENT_URL = (process.env.VOLTAGENT_URL || "http://localhost:3141").replace(/\/$/, "");
-const AGENT_SECRET = process.env.IISF_AGENT_SECRET || "";
+const {
+  agentUrl: AGENT_URL,
+  agentSecret: AGENT_SECRET,
+  configError: AGENT_CONFIG_ERROR,
+} = resolveAgentServerConfig();
 
 async function fetchAgent(path: string, init: RequestInit): Promise<Response> {
   const paths = [path, `/api${path}`];
@@ -40,9 +44,9 @@ function normalizeErrorPayload(raw: string): string {
 
 export async function POST(request: NextRequest) {
   try {
-    if (!AGENT_SECRET) {
+    if (AGENT_CONFIG_ERROR) {
       return NextResponse.json(
-        { error: "IISF_AGENT_SECRET is not configured" },
+        { error: AGENT_CONFIG_ERROR },
         { status: 500 },
       );
     }

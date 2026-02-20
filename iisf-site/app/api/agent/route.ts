@@ -1,12 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
+import { resolveAgentServerConfig } from "@/lib/agent-server";
 
 /**
- * Proxy requests to the VoltAgent server running on localhost:3141.
+ * Proxy requests to the VoltAgent server.
  * This keeps the agent server address private and lets the frontend
- * call /api/agent instead of hitting port 3141 directly.
+ * call /api/agent instead of calling the agent URL directly.
  */
-const AGENT_URL = (process.env.VOLTAGENT_URL || "http://localhost:3141").replace(/\/$/, "");
-const AGENT_SECRET = process.env.IISF_AGENT_SECRET || "";
+const {
+  agentUrl: AGENT_URL,
+  agentSecret: AGENT_SECRET,
+  configError: AGENT_CONFIG_ERROR,
+} = resolveAgentServerConfig();
 
 async function fetchAgent(path: string, init: RequestInit): Promise<Response> {
   // Compat: some Volt deployments expose routes under /agents/*, others under /api/agents/*.
@@ -43,9 +47,9 @@ function normalizeErrorPayload(raw: string): string {
 
 export async function POST(request: NextRequest) {
   try {
-    if (!AGENT_SECRET) {
+    if (AGENT_CONFIG_ERROR) {
       return NextResponse.json(
-        { error: "IISF_AGENT_SECRET is not configured" },
+        { error: AGENT_CONFIG_ERROR },
         { status: 500 },
       );
     }
@@ -89,9 +93,9 @@ export async function POST(request: NextRequest) {
 
 export async function GET() {
   try {
-    if (!AGENT_SECRET) {
+    if (AGENT_CONFIG_ERROR) {
       return NextResponse.json(
-        { error: "IISF_AGENT_SECRET is not configured" },
+        { error: AGENT_CONFIG_ERROR },
         { status: 500 },
       );
     }

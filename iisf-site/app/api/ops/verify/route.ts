@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { resolveAgentServerConfig } from "@/lib/agent-server";
 
 /**
  * Cross-verification endpoint.
@@ -13,8 +14,11 @@ import { NextRequest, NextResponse } from "next/server";
  *   SEOStrategist, ResearchDirector
  */
 
-const AGENT_URL = (process.env.VOLTAGENT_URL || "http://localhost:3141").replace(/\/$/, "");
-const AGENT_SECRET = process.env.IISF_AGENT_SECRET || "";
+const {
+  agentUrl: AGENT_URL,
+  agentSecret: AGENT_SECRET,
+  configError: AGENT_CONFIG_ERROR,
+} = resolveAgentServerConfig();
 
 async function fetchAgent(path: string, init: RequestInit): Promise<Response> {
   const paths = [path, `/api${path}`];
@@ -50,12 +54,12 @@ function normalizeErrorPayload(raw: string): string {
 async function queryAgent(agentId: string, input: string): Promise<{ agent: string; response: string; durationMs: number; error?: string }> {
   const start = Date.now();
   try {
-    if (!AGENT_SECRET) {
+    if (AGENT_CONFIG_ERROR) {
       return {
         agent: agentId,
         response: "",
         durationMs: Date.now() - start,
-        error: "IISF_AGENT_SECRET is not configured",
+        error: AGENT_CONFIG_ERROR,
       };
     }
 
