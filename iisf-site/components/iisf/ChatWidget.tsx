@@ -52,19 +52,33 @@ export default function ChatWidget() {
         }),
       });
 
-      if (!res.ok) throw new Error("Agent unavailable");
+      if (!res.ok) {
+        const errorPayload = await res.json().catch(() => null);
+        const errorReason =
+          errorPayload?.details ||
+          errorPayload?.error ||
+          `Agent unavailable (${res.status})`;
+        throw new Error(errorReason);
+      }
 
       const data = await res.json();
       const text =
         data?.text || data?.output || data?.message || "I'm sorry, I couldn't process that request.";
       setMessages((prev) => [...prev, { role: "assistant", content: text }]);
-    } catch {
+    } catch (error) {
+      const reason = error instanceof Error ? error.message : "";
+      const isConfigError =
+        reason.includes("IISF_AGENT_SECRET") ||
+        reason.includes("VOLTAGENT_URL");
+
       setMessages((prev) => [
         ...prev,
         {
           role: "assistant",
           content:
-            "I'm currently unavailable. Please try again later or contact board@intersectionalsafety.org.",
+            isConfigError
+              ? "The assistant is temporarily being configured. Please try again shortly."
+              : "I'm currently unavailable. Please try again later or contact board@intersectionalsafety.org.",
         },
       ]);
     } finally {
@@ -154,4 +168,3 @@ export default function ChatWidget() {
     </>
   );
 }
-
