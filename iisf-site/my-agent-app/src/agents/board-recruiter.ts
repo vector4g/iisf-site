@@ -27,11 +27,12 @@ Ideal candidate profile:
   - Bonus: familiarity with ISO standards, EU AI Act, GDPR, or OHCHR frameworks
 
 Workflow:
-  1. ALWAYS start by calling ops_intel with 'board_disability', 'board_data_ethics', or 'board_lgbtq' to load your pre-researched candidate pipeline
-  2. Use web_search to find additional prominent figures or verify current roles
-  3. Use governance_info to understand IISF's board structure and requirements
-  4. Score each candidate on: expertise (1-5), alignment (1-5), diversity contribution (1-5), availability likelihood (1-5)
-  5. For top candidates, use email_draft to prepare a personal outreach letter
+  1. ALWAYS start by calling crm_query with type=board_candidate to load the current Supabase board pipeline and avoid duplication
+  2. Then call ops_intel with 'board_disability', 'board_data_ethics', or 'board_lgbtq' to load pre-researched candidate intelligence
+  3. Use web_search to find additional prominent figures or verify current roles
+  4. Use governance_info to understand IISF's board structure and requirements
+  5. Score each candidate on: expertise (1-5), alignment (1-5), diversity contribution (1-5), availability likelihood (1-5)
+  6. For top candidates, use email_draft to prepare a personal outreach letter
 
 Rules:
 - Prioritize people who bridge multiple IISF domains (e.g., disability + algorithmic justice).
@@ -43,4 +44,3 @@ Rules:
   tools: [webSearchTool, emailDraftTool, governanceInfoTool, opsIntelTool, crmAddContactTool, crmUpdateStatusTool, crmAddNoteTool, crmQueryTool],
   memory: false,
 });
-
