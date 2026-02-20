@@ -1,0 +1,47 @@
+name: SEO Checks
+
+on:
+  push:
+    paths:
+      - "iisf-site/app/**"
+      - "iisf-site/lib/**"
+      - "iisf-site/content/**"
+      - "iisf-site/public/**"
+      - "iisf-site/scripts/seo-lint.mjs"
+      - "iisf-site/package.json"
+      - "iisf-site/package-lock.json"
+      - ".github/workflows/seo.yml"
+  pull_request:
+    paths:
+      - "iisf-site/app/**"
+      - "iisf-site/lib/**"
+      - "iisf-site/content/**"
+      - "iisf-site/public/**"
+      - "iisf-site/scripts/seo-lint.mjs"
+      - "iisf-site/package.json"
+      - "iisf-site/package-lock.json"
+      - ".github/workflows/seo.yml"
+
+jobs:
+  seo:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: iisf-site
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: iisf-site/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run SEO lint
+        run: npm run seo:lint
+
