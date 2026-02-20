@@ -44,6 +44,29 @@ ANTHROPIC_API_KEY=your-api-key-here
 # VOLTAGENT_SECRET_KEY=your-secret-key
 ```
 
+### Ops Team Autostart Baseline
+
+To run the IISF ops strategy cycle immediately on service boot, add:
+
+```env
+# Enable one immediate run when the server starts
+OPS_AUTOSTART=true
+
+# Optional recurring cadence in minutes (omit or set 0 for one-time startup run)
+OPS_AUTOSTART_INTERVAL_MINUTES=0
+
+# Baseline cycle inputs
+OPS_BASELINE_CYCLE_TYPE=weekly
+OPS_BASELINE_HORIZON_DAYS=30
+OPS_BASELINE_GEOGRAPHY=US,EU (Estonia, Germany),Global Online
+OPS_BASELINE_PRIORITY_FOCUS=funding,board_recruitment,domain_intelligence,seo,thought_leadership
+OPS_BASELINE_OBJECTIVE=Stand up a verified 30-day operating pipeline for funding, board recruitment, domain authority, and SEO execution.
+```
+
+This autostart run uses the `ops-strategy-cycle` workflow and requires:
+- `SUPABASE_URL`
+- `SUPABASE_SERVICE_ROLE_KEY`
+
 ### Running the Application
 
 ```bash

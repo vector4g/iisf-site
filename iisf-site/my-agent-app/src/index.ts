@@ -317,3 +317,136 @@ new VoltAgent({
     secretKey: process.env.VOLTAGENT_SECRET_KEY || "",
   }),
 });
+
+type OpsCycleType = "weekly" | "biweekly" | "sprint";
+type OpsPriorityFocus =
+  | "funding"
+  | "board_recruitment"
+  | "domain_intelligence"
+  | "seo"
+  | "thought_leadership";
+
+function isEnabledFlag(value: string | undefined) {
+  if (!value) return false;
+  return ["1", "true", "yes", "on"].includes(value.trim().toLowerCase());
+}
+
+function parsePositiveInt(value: string | undefined, fallback: number) {
+  const parsed = Number.parseInt(value ?? "", 10);
+  if (!Number.isFinite(parsed) || parsed <= 0) return fallback;
+  return parsed;
+}
+
+function parseCsv(value: string | undefined, fallback: string[]) {
+  if (!value) return fallback;
+  const parsed = value
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
+  return parsed.length > 0 ? parsed : fallback;
+}
+
+function parseCycleType(value: string | undefined): OpsCycleType {
+  const normalized = value?.trim().toLowerCase();
+  if (normalized === "weekly" || normalized === "biweekly" || normalized === "sprint") {
+    return normalized;
+  }
+  return "weekly";
+}
+
+function parsePriorityFocus(value: string | undefined): OpsPriorityFocus[] {
+  const allowed = new Set<OpsPriorityFocus>([
+    "funding",
+    "board_recruitment",
+    "domain_intelligence",
+    "seo",
+    "thought_leadership",
+  ]);
+  const parsed = parseCsv(value, []).filter((item): item is OpsPriorityFocus =>
+    allowed.has(item as OpsPriorityFocus),
+  );
+  if (parsed.length > 0) return parsed;
+  return ["funding", "board_recruitment", "domain_intelligence", "seo", "thought_leadership"];
+}
+
+function buildBaselineOpsInput() {
+  return {
+    objective:
+      process.env.OPS_BASELINE_OBJECTIVE ??
+      "Stand up a verified 30-day operating pipeline for funding, board recruitment, domain authority, and SEO execution.",
+    cycleType: parseCycleType(process.env.OPS_BASELINE_CYCLE_TYPE),
+    planningHorizonDays: parsePositiveInt(process.env.OPS_BASELINE_HORIZON_DAYS, 30),
+    geographyFocus: parseCsv(process.env.OPS_BASELINE_GEOGRAPHY, [
+      "US",
+      "EU (Estonia, Germany)",
+      "Global Online",
+    ]),
+    priorityFocus: parsePriorityFocus(process.env.OPS_BASELINE_PRIORITY_FOCUS),
+  };
+}
+
+let opsCycleInFlight = false;
+
+async function runOpsCycle(trigger: "startup" | "interval") {
+  if (opsCycleInFlight) {
+    logger.warn("Skipping ops-strategy-cycle run because a previous run is still in progress", {
+      trigger,
+    });
+    return;
+  }
+
+  const input = buildBaselineOpsInput();
+  opsCycleInFlight = true;
+  try {
+    logger.info("Starting ops-strategy-cycle workflow", {
+      trigger,
+      cycleType: input.cycleType,
+      planningHorizonDays: input.planningHorizonDays,
+    });
+    const execution = await opsStrategyCycleWorkflow.run(input, {
+      userId: process.env.OPS_AUTOSTART_USER_ID ?? "system-ops-autostart",
+      conversationId: `ops-autostart-${new Date().toISOString().slice(0, 10)}`,
+    });
+    if (execution.status !== "completed" || !execution.result) {
+      logger.warn("ops-strategy-cycle workflow did not complete successfully", {
+        trigger,
+        status: execution.status,
+        executionId: execution.executionId,
+      });
+      return;
+    }
+
+    logger.info("ops-strategy-cycle workflow completed", {
+      trigger,
+      executionId: execution.executionId,
+      fundingItems: execution.result.fundingPipeline.length,
+      boardItems: execution.result.boardAdvisorPipeline.length,
+      domainItems: execution.result.domainOwnershipMap.length,
+      topContentPieces: execution.result.thoughtLeadershipSeoPlan.topPriorityPieces.length,
+    });
+  } catch (error) {
+    logger.error("ops-strategy-cycle workflow failed", { trigger, error });
+  } finally {
+    opsCycleInFlight = false;
+  }
+}
+
+function configureOpsAutostart() {
+  if (!isEnabledFlag(process.env.OPS_AUTOSTART)) return;
+
+  // Run once immediately after boot when enabled.
+  void runOpsCycle("startup");
+
+  // Optional recurring run cadence in minutes.
+  const intervalMinutes = parsePositiveInt(process.env.OPS_AUTOSTART_INTERVAL_MINUTES, 0);
+  if (intervalMinutes <= 0) return;
+
+  const intervalMs = intervalMinutes * 60_000;
+  setInterval(() => {
+    void runOpsCycle("interval");
+  }, intervalMs);
+
+  logger.info("Configured recurring ops-strategy-cycle autostart interval", { intervalMinutes });
+}
+
+configureOpsAutostart();
