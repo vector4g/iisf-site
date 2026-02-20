@@ -19,10 +19,19 @@ const AGENT_SECRET = process.env.IISF_AGENT_SECRET || "";
 async function queryAgent(agentId: string, input: string): Promise<{ agent: string; response: string; durationMs: number; error?: string }> {
   const start = Date.now();
   try {
-    const headers: Record<string, string> = { "Content-Type": "application/json" };
-    if (AGENT_SECRET) headers["Authorization"] = `Bearer ${AGENT_SECRET}`;
+    if (!AGENT_SECRET) {
+      return {
+        agent: agentId,
+        response: "",
+        durationMs: Date.now() - start,
+        error: "IISF_AGENT_SECRET is not configured",
+      };
+    }
 
-    const res = await fetch(`${AGENT_URL}/api/agents/${agentId}/text`, {
+    const headers: Record<string, string> = { "Content-Type": "application/json" };
+    headers["Authorization"] = `Bearer ${AGENT_SECRET}`;
+
+    const res = await fetch(`${AGENT_URL}/agents/${agentId}/text`, {
       method: "POST",
       headers,
       body: JSON.stringify({ input, userId: "ops-verify" }),
@@ -78,4 +87,3 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Verification failed" }, { status: 500 });
   }
 }
-

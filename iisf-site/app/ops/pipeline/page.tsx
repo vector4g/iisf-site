@@ -44,16 +44,24 @@ export default function PipelinePage() {
   const [search, setSearch] = useState("");
   const [selected, setSelected] = useState<Contact | null>(null);
 
-  const loadData = useCallback(async () => {
+  const fetchContacts = useCallback(async (nextFilterType: string, nextSearch: string): Promise<Contact[]> => {
     const params = new URLSearchParams();
-    if (filterType) params.set("type", filterType);
-    if (search) params.set("search", search);
+    if (nextFilterType) params.set("type", nextFilterType);
+    if (nextSearch) params.set("search", nextSearch);
     const res = await fetch(`/api/ops/crm?${params}`);
     const data = await res.json();
-    setContacts(data.contacts ?? []);
-  }, [filterType, search]);
+    return data.contacts ?? [];
+  }, []);
 
-  useEffect(() => { loadData(); }, [loadData]);
+  useEffect(() => {
+    let active = true;
+    void fetchContacts(filterType, search).then((nextContacts) => {
+      if (active) setContacts(nextContacts);
+    });
+    return () => {
+      active = false;
+    };
+  }, [fetchContacts, filterType, search]);
 
   const moveStage = async (id: string, stage: string) => {
     await fetch("/api/ops/crm", {
@@ -61,7 +69,8 @@ export default function PipelinePage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, stage }),
     });
-    loadData();
+    const nextContacts = await fetchContacts(filterType, search);
+    setContacts(nextContacts);
   };
 
   const grouped = STAGES.reduce<Record<string, Contact[]>>((acc, s) => {

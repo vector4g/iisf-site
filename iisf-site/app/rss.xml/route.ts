@@ -3,10 +3,17 @@ import { NextResponse } from "next/server";
 import { sanityClient } from "@/lib/sanity";
 import { allPostsQuery } from "@/lib/queries";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
+
+type RssPost = {
+  title: string;
+  slug: string;
+  publishedAt: string;
+  excerpt?: string | null;
+};
 
 export async function GET() {
-  const posts: any[] = await sanityClient.fetch(allPostsQuery);
+  const posts = await sanityClient.fetch<RssPost[]>(allPostsQuery);
 
   const items = posts
     .map(

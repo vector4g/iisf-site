@@ -38,7 +38,6 @@ export default function VerifyPage() {
   const [selectedAgents, setSelectedAgents] = useState<string[]>(["iisf-ops", "iisf-assistant"]);
   const [result, setResult] = useState<VerifyResponse | null>(null);
   const [loading, setLoading] = useState(false);
-  const [history, setHistory] = useState<VerifyResponse[]>([]);
 
   const toggleAgent = (id: string) => {
     setSelectedAgents((prev) =>
@@ -59,7 +58,6 @@ export default function VerifyPage() {
       });
       const data: VerifyResponse = await res.json();
       setResult(data);
-      setHistory((prev) => [data, ...prev].slice(0, 10));
     } catch {
       setResult(null);
     } finally {
@@ -156,4 +154,3 @@ export default function VerifyPage() {
     </div>
   );
 }
-

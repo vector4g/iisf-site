@@ -238,10 +238,13 @@ if (!agentSecret) {
   throw new Error("IISF_AGENT_SECRET is required. Set it in .env or Railway variables.");
 }
 
+const configuredPort = Number.parseInt(process.env.PORT ?? "3141", 10);
+const serverPort = Number.isFinite(configuredPort) ? configuredPort : 3141;
+
 new VoltAgent({
   agents: {
     // Public-facing Q&A agent (Charter, governance, fellowships)
-    agent: supervisor,
+    "iisf-assistant": supervisor,
     // Internal operations team (funding, content, SEO, board, research)
     "iisf-ops": opsDirector,
   },
@@ -249,6 +252,8 @@ new VoltAgent({
     researchInquiryWorkflow,
   },
   server: honoServer({
+    // Railway and most PaaS providers require binding to process.env.PORT.
+    port: serverPort,
     // ── Auth: Bearer-token locks all endpoints ──
     authNext: {
       provider: jwtAuth({

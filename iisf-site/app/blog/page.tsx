@@ -35,8 +35,8 @@ type Post = {
 export const dynamic = "force-dynamic";
 
 async function getPosts(): Promise<Post[]> {
-  const data = await sanityClient.fetch(allPostsQuery);
-  return data.map((p: any) => ({
+  const data = await sanityClient.fetch<Post[]>(allPostsQuery);
+  return data.map((p) => ({
     _id: p._id,
     title: p.title,
     slug: p.slug,

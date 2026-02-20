@@ -9,17 +9,22 @@ const AGENT_SECRET = process.env.IISF_AGENT_SECRET || "";
 
 export async function POST(request: NextRequest) {
   try {
+    if (!AGENT_SECRET) {
+      return NextResponse.json(
+        { error: "IISF_AGENT_SECRET is not configured" },
+        { status: 500 },
+      );
+    }
+
     const body = await request.json();
     const agentId = "iisf-ops";
 
     const headers: Record<string, string> = {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${AGENT_SECRET}`,
     };
-    if (AGENT_SECRET) {
-      headers["Authorization"] = `Bearer ${AGENT_SECRET}`;
-    }
 
-    const response = await fetch(`${AGENT_URL}/api/agents/${agentId}/stream`, {
+    const response = await fetch(`${AGENT_URL}/agents/${agentId}/stream`, {
       method: "POST",
       headers,
       body: JSON.stringify({
@@ -54,4 +59,3 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-

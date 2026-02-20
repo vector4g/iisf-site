@@ -10,13 +10,24 @@ export type BlogMeta = {
   description?: string;
 };
 
+function parseMetadataFromMdx(source: string): Partial<BlogMeta> {
+  const title = source.match(/title:\s*["'`]([^"'`]+)["'`]/)?.[1];
+  const date = source.match(/date:\s*["'`]([^"'`]+)["'`]/)?.[1];
+  const description = source
+    .match(/description:\s*["'`]([\s\S]*?)["'`]\s*,/m)?.[1]
+    ?.replace(/\s+/g, " ")
+    .trim();
+
+  return { title, date, description };
+}
+
 export function getAllPosts(): BlogMeta[] {
   const files = fs.readdirSync(BLOG_DIR).filter((f) => f.endsWith(".mdx"));
 
   const posts: BlogMeta[] = files.map((file) => {
     const slug = file.replace(/\.mdx$/, "");
-    const mod = require(path.join(BLOG_DIR, file));
-    const meta = mod.metadata ?? {};
+    const source = fs.readFileSync(path.join(BLOG_DIR, file), "utf8");
+    const meta = parseMetadataFromMdx(source);
     return {
       slug,
       title: meta.title ?? slug,
