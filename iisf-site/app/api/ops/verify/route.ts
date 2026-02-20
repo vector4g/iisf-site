@@ -13,8 +13,39 @@ import { NextRequest, NextResponse } from "next/server";
  *   SEOStrategist, ResearchDirector
  */
 
-const AGENT_URL = process.env.VOLTAGENT_URL || "http://localhost:3141";
+const AGENT_URL = (process.env.VOLTAGENT_URL || "http://localhost:3141").replace(/\/$/, "");
 const AGENT_SECRET = process.env.IISF_AGENT_SECRET || "";
+
+async function fetchAgent(path: string, init: RequestInit): Promise<Response> {
+  const paths = [path, `/api${path}`];
+  let fallbackResponse: Response | null = null;
+
+  for (const candidatePath of paths) {
+    const response = await fetch(`${AGENT_URL}${candidatePath}`, init);
+    if (response.ok) return response;
+
+    if (response.status !== 404 && response.status !== 405) {
+      return response;
+    }
+
+    fallbackResponse = response;
+  }
+
+  return fallbackResponse as Response;
+}
+
+function normalizeErrorPayload(raw: string): string {
+  try {
+    const parsed = JSON.parse(raw) as {
+      error?: string;
+      details?: string;
+      message?: string;
+    };
+    return parsed.details || parsed.error || parsed.message || raw;
+  } catch {
+    return raw;
+  }
+}
 
 async function queryAgent(agentId: string, input: string): Promise<{ agent: string; response: string; durationMs: number; error?: string }> {
   const start = Date.now();
@@ -31,7 +62,7 @@ async function queryAgent(agentId: string, input: string): Promise<{ agent: stri
     const headers: Record<string, string> = { "Content-Type": "application/json" };
     headers["Authorization"] = `Bearer ${AGENT_SECRET}`;
 
-    const res = await fetch(`${AGENT_URL}/agents/${agentId}/text`, {
+    const res = await fetchAgent(`/agents/${agentId}/text`, {
       method: "POST",
       headers,
       body: JSON.stringify({ input, userId: "ops-verify" }),
@@ -39,7 +70,12 @@ async function queryAgent(agentId: string, input: string): Promise<{ agent: stri
 
     if (!res.ok) {
       const errText = await res.text();
-      return { agent: agentId, response: "", durationMs: Date.now() - start, error: errText };
+      return {
+        agent: agentId,
+        response: "",
+        durationMs: Date.now() - start,
+        error: normalizeErrorPayload(errText),
+      };
     }
 
     const data = await res.json();

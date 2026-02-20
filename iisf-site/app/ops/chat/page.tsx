@@ -43,7 +43,14 @@ export default function OpsChat() {
         body: JSON.stringify({ input: trimmed, conversationId }),
       });
 
-      if (!res.ok) throw new Error("Agent unavailable");
+      if (!res.ok) {
+        const errorPayload = await res.json().catch(() => null);
+        const errorReason =
+          errorPayload?.details ||
+          errorPayload?.error ||
+          `Agent unavailable (${res.status})`;
+        throw new Error(errorReason);
+      }
 
       if (res.headers.get("content-type")?.includes("text/event-stream") && res.body) {
         // Stream SSE
@@ -85,8 +92,18 @@ export default function OpsChat() {
         const text = data?.text || data?.output || "Task completed.";
         setMessages((prev) => [...prev, { role: "assistant", content: text, agent: "OpsDirector", timestamp: new Date().toISOString() }]);
       }
-    } catch {
-      setMessages((prev) => [...prev, { role: "assistant", content: "⚠️ Agent service unavailable. Check Railway deployment.", timestamp: new Date().toISOString() }]);
+    } catch (error) {
+      const reason = error instanceof Error ? error.message : "";
+      const isConfigError =
+        reason.includes("IISF_AGENT_SECRET") ||
+        reason.includes("VOLTAGENT_URL");
+      setMessages((prev) => [...prev, {
+        role: "assistant",
+        content: isConfigError
+          ? "⚠️ Ops agent configuration missing on the site deployment."
+          : `⚠️ Agent service unavailable. ${reason || "Check Railway deployment."}`,
+        timestamp: new Date().toISOString(),
+      }]);
     } finally {
       setLoading(false);
     }
@@ -160,4 +177,3 @@ export default function OpsChat() {
     </div>
   );
 }
-
