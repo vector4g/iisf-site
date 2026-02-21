@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import Header from "@/components/iisf/Header";
 import Footer from "@/components/iisf/Footer";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "Privacy policy for intersectionalsafety.org, including data processing, legal bases, retention, and user rights across US and EU contexts.",
+  alternates: { canonical: "https://intersectionalsafety.org/legal/privacy" },
+};
 
 export default function PrivacyPage() {
   return (

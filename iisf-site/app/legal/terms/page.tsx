@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import Header from "@/components/iisf/Header";
 import Footer from "@/components/iisf/Footer";
+
+export const metadata: Metadata = {
+  title: "Terms of Use",
+  description:
+    "Terms of use for intersectionalsafety.org, including acceptable use, intellectual property, liability limits, and governing law.",
+  alternates: { canonical: "https://intersectionalsafety.org/legal/terms" },
+};
 
 export default function TermsPage() {
   return (

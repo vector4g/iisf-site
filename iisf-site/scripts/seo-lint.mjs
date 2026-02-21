@@ -58,6 +58,12 @@ requireIncludes("app/governance/page.tsx", [
   "alternates: { canonical: \"https://intersectionalsafety.org/governance\" }",
 ]);
 
+requireIncludes("app/iisf/page.tsx", [
+  "export const metadata",
+  "alternates: { canonical: \"https://intersectionalsafety.org\" }",
+  "robots: { index: false, follow: true }",
+]);
+
 requireIncludes("app/blog/page.tsx", [
   "export const metadata",
   "alternates: { canonical: \"https://intersectionalsafety.org/blog\" }",
@@ -66,7 +72,8 @@ requireIncludes("app/blog/page.tsx", [
 requireIncludes("app/blog/[slug]/page.tsx", [
   "generateMetadata",
   "alternates: { canonical: url }",
-  "\"@type\": \"Article\"",
+  "\"@type\": \"BlogPosting\"",
+  "images: [ogImage]",
 ]);
 
 requireIncludes("app/layout.tsx", [
@@ -74,6 +81,31 @@ requireIncludes("app/layout.tsx", [
   "alternates:",
   "canonical: SITE_URL",
   "robots:",
+]);
+
+requireIncludes("app/blog/[slug]/opengraph-image.tsx", [
+  "ImageResponse",
+  "singlePostQuery",
+  "export default async function OGImage",
+]);
+
+requireIncludes("app/blog/[slug]/twitter-image.tsx", [
+  "from \"./opengraph-image\"",
+]);
+
+requireIncludes("app/legal/privacy/page.tsx", [
+  "export const metadata",
+  "alternates: { canonical: \"https://intersectionalsafety.org/legal/privacy\" }",
+]);
+
+requireIncludes("app/legal/terms/page.tsx", [
+  "export const metadata",
+  "alternates: { canonical: \"https://intersectionalsafety.org/legal/terms\" }",
+]);
+
+requireIncludes("app/legal/imprint/page.tsx", [
+  "export const metadata",
+  "alternates: { canonical: \"https://intersectionalsafety.org/legal/imprint\" }",
 ]);
 
 const publicDir = filePath("public");
@@ -98,6 +130,25 @@ if (fs.existsSync(publicDir)) {
   failures.push("Missing /public directory.");
 }
 
+const rootYandexVerificationFiles = fs
+  .readdirSync(root)
+  .filter((name) => /^yandex_[a-z0-9]+\.html$/i.test(name));
+
+for (const fileName of rootYandexVerificationFiles) {
+  const publicFile = path.join(publicDir, fileName);
+  if (!fs.existsSync(publicFile)) {
+    failures.push(
+      `Yandex verification file exists at project root but not in /public: ${fileName}`,
+    );
+    continue;
+  }
+
+  const body = fs.readFileSync(publicFile, "utf8");
+  if (!body.toLowerCase().includes("verification:")) {
+    failures.push(`Yandex verification file in /public looks invalid: ${fileName}`);
+  }
+}
+
 if (failures.length > 0) {
   console.error("SEO lint failed:");
   for (const failure of failures) {
@@ -110,4 +161,3 @@ console.log("SEO lint passed.");
 for (const note of notes) {
   console.log(`- ${note}`);
 }
-

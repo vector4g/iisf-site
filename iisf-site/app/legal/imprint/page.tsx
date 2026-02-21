@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import Header from "@/components/iisf/Header";
 import Footer from "@/components/iisf/Footer";
+
+export const metadata: Metadata = {
+  title: "Imprint / Legal Notice",
+  description:
+    "Legal notice and operator information for intersectionalsafety.org and the International Intersectional Safety Foundation.",
+  alternates: { canonical: "https://intersectionalsafety.org/legal/imprint" },
+};
 
 export default function ImprintPage() {
   return (

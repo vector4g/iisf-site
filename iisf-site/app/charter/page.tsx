@@ -77,7 +77,7 @@ export default function CharterPage() {
             Epistemological and Statistical Frameworks of Human Rights Data
           </h2>
           <p className="text-sm leading-relaxed text-slate-300">
-            The architectural foundation of the Charter relies on the progressive codification of international human rights, tracing its lineage from the 1948 Universal Declaration of Human Rights, which initiated a massive proliferation of over one hundred human rights instruments globally. For the United Nations system, the rule of law dictates that all institutions, public and private, are accountable to laws that are publicly promulgated, equally enforced, and independently adjudicated. To bring the private sector into alignment with these standards, the UN Global Compact was launched, representing the largest corporate sustainability initiative in the world, encompassing over 8,000 companies and 4,000 non-business signatories across 170 countries.
+            The architectural foundation of the Charter relies on the progressive codification of international human rights, tracing its lineage from the 1948 Universal Declaration of Human Rights, which initiated a massive proliferation of over one hundred human rights instruments globally. For the United Nations system, the rule of law dictates that all institutions, public and private, are accountable to laws that are publicly promulgated, equally enforced, and independently adjudicated. To bring the private sector into alignment with these standards, the UN Global Compact was launched, representing the largest corporate sustainability initiative in the world, encompassing over 20,000 businesses and more than 3,800 non-business participants across 160+ countries.
           </p>
           <p className="mt-4 text-sm leading-relaxed text-slate-300">
             However, translating these high-level legal principles into actionable, algorithmic architecture requires a rigorous data ontology. As established by the Human Rights Data Analysis Group (HRDAG)&mdash;an organization that has spent decades providing quantitative analysis for truth commissions and international tribunals in regions ranging from El Salvador and Guatemala to Chad and Syria&mdash;human rights documentation must rely on the best scientific analysis, bringing profound statistical skepticism to every dataset.
@@ -480,4 +480,3 @@ export default function CharterPage() {
     </main>
   );
 }
-

@@ -18,6 +18,7 @@ interface Post {
   title: string;
   slug: string;
   publishedAt: string;
+  _updatedAt?: string;
   excerpt?: string;
   body: PortableTextBlock[];
   categories?: Category[];
@@ -35,6 +36,7 @@ async function getPost(slug: string): Promise<Post | null> {
     title: data.title,
     slug: data.slug,
     publishedAt: data.publishedAt,
+    _updatedAt: data._updatedAt,
     excerpt: data.excerpt,
     body: data.body,
     categories: data.categories ?? [],
@@ -63,6 +65,7 @@ export async function generateMetadata({
   const description =
     post.excerpt ?? "Research from the International Intersectional Safety Foundation.";
   const url = `https://intersectionalsafety.org/blog/${slug}`;
+  const ogImage = `${url}/opengraph-image`;
 
   const pubDate = post.publishedAt
     ? new Date(post.publishedAt).toISOString().split("T")[0]
@@ -78,8 +81,9 @@ export async function generateMetadata({
       type: "article",
       publishedTime: post.publishedAt,
       authors: ["International Intersectional Safety Foundation"],
+      images: [ogImage],
     },
-    twitter: { card: "summary_large_image", title, description },
+    twitter: { card: "summary_large_image", title, description, images: [ogImage] },
     alternates: { canonical: url },
     // Google Scholar citation meta tags
     other: {
@@ -135,13 +139,22 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
     notFound();
   }
 
+  const url = `https://intersectionalsafety.org/blog/${slug}`;
+  const ogImage = `${url}/opengraph-image`;
+
   const articleJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: post.title,
     description: post.excerpt ?? "",
     datePublished: post.publishedAt,
-    url: `https://intersectionalsafety.org/blog/${slug}`,
+    dateModified: post._updatedAt ?? post.publishedAt,
+    url,
+    mainEntityOfPage: url,
+    image: [ogImage],
+    ...(post.categories && post.categories.length > 0
+      ? { articleSection: post.categories.map((category) => category.title) }
+      : {}),
     author: {
       "@type": "Organization",
       name: "International Intersectional Safety Foundation",

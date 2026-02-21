@@ -1,0 +1,46 @@
+name: SEO Checks
+
+on:
+  pull_request:
+    paths:
+      - "app/**"
+      - "components/**"
+      - "lib/**"
+      - "public/**"
+      - "sanity/**"
+      - "scripts/seo-lint.mjs"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/seo.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "app/**"
+      - "components/**"
+      - "lib/**"
+      - "public/**"
+      - "sanity/**"
+      - "scripts/seo-lint.mjs"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/seo.yml"
+
+jobs:
+  seo-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run SEO lint
+        run: npm run seo:lint

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 /**
- * Middleware: subdomain routing + ops auth
+ * Proxy: subdomain routing + ops auth
  *
  * ops.intersectionalsafety.org  →  /ops/*   (password-gated)
  * intersectionalsafety.org      →  public site (passthrough)
@@ -11,7 +11,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 const OPS_HOSTS = ["ops.intersectionalsafety.org", "ops.localhost:3000"];
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const host = request.headers.get("host") ?? "";
   const { pathname } = request.nextUrl;
 
@@ -44,4 +44,3 @@ export const config = {
     "/((?!_next/static|_next/image|favicon.ico|iisf-logo.png|.*\\.svg$).*)",
   ],
 };
-

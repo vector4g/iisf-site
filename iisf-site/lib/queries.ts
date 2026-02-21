@@ -6,6 +6,7 @@ export const allPostsQuery = groq`
   title,
   "slug": slug.current,
   publishedAt,
+  _updatedAt,
   excerpt,
   categories[]->{
     _id,
@@ -20,6 +21,7 @@ export const singlePostQuery = groq`
   title,
   "slug": slug.current,
   publishedAt,
+  _updatedAt,
   excerpt,
   body,
   categories[]->{
